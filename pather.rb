@@ -1,12 +1,13 @@
-# Sudo Code
+#!/usr/bin/env ruby
 
 class Pather
-  attr_accessor :path, :position, :pattern, :replacer
+  attr_accessor :path, :position, :pattern, :character, :replacer
 
   def initialize
     @path = []
     @position = {}
     @pattern = /['#']/
+    @character = '#'
     @replacer = '*'
   end
 
@@ -29,10 +30,10 @@ private
     line_position = line.scan(@pattern)
     prep = line.split('')
     if !@position[:index1]
-      @position[:index1] = prep.index('#')
+      @position[:index1] = prep.index(@character)
       line_adder(line)
     else
-     @position[:index2] = prep.index('#')
+     @position[:index2] = prep.index(@character)
      line_draw(line)
     end
   end
