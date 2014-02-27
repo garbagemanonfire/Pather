@@ -7,7 +7,7 @@ describe "pather" do
   end
 
   it "reads a file and prints a path between the two #" do
-    `ruby pather.rb <input.txt >output.txt`
+    `./pather.rb input.txt output.txt`
     IO.read('./output.txt').should == IO.read('./expected.txt')
   end
 

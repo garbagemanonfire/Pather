@@ -1,14 +1,15 @@
 # require 'spec_helper'
+# require './pather.rb'
 
-# describe "pather" do
+# describe "pather units" do
+
+#   before(:all) do
+#     @pathway = Pather.new()
+#   end
 
 #   after(:all) do
 #     File.delete './output.txt'
 #   end
 
-#   it "reads a file and prints a path between the two #" do
-#     `ruby pather.rb <input.txt >output.txt`
-#     IO.read('./output.txt').should == IO.read('./expected.txt')
-#   end
 
 # end

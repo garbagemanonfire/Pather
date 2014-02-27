@@ -1,18 +1,20 @@
 #!/usr/bin/env ruby
 
 class Pather
-  attr_accessor :path, :position, :pattern, :character, :replacer
+  attr_accessor :path, :position, :pattern, :character, :replacer, :input, :output
 
-  def initialize
+  def initialize(input, output)
     @path = []
     @position = {}
     @pattern = /['#']/
     @character = '#'
     @replacer = '*'
+    @input_file = File.new(input, 'r')
+    @output_file = File.new(output, 'w')
   end
 
   def runner
-    while line = gets
+    @input_file.each do |line|
       if(pattern.match(line))
         position_finder(line)
       elsif(position[:index1] && !pattern.match(line))
@@ -51,12 +53,15 @@ private
   end
 
   def outputer
-    puts @path.each {|line| "#{line}" }
+    puts @path.each {|line| @output_file.puts"#{line}" }
   end
 
 end
 
-pathway = Pather.new()
+input = ARGV.shift
+output = ARGV.shift
+
+pathway = Pather.new(input, output)
 pathway.runner
 
 
