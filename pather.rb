@@ -46,9 +46,18 @@ private
   end
 
   def line_draw(line)
-    @position[:index2] ? diff = @position[:index2].to_i - @position[:index1].to_i : diff = 0
+    @position[:index2] ? line_draw_horizontal(line) : line_draw_vertical(line)
+  end
+
+  def line_draw_horizontal(line)
+    diff = @position[:index2].to_i - @position[:index1].to_i
     horizontal_line = Array.new(diff, @replacer).join
-    @position[:index2] ? line[@position[:index1], diff] = horizontal_line : line[@position[:index1]] = @replacer
+    line[@position[:index1], diff] = horizontal_line
+    line_adder(line)
+  end
+
+  def line_draw_vertical(line)
+    line[@position[:index1]] = @replacer
     line_adder(line)
   end
 
