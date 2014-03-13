@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-
+# Class that parses text file, finds positionts of the desired character,
+# draws a line between these positions, and outputs a text file
 class Pather
   attr_accessor :position, :pattern, :input, :output
 
@@ -15,9 +16,9 @@ class Pather
 
   def runner
     @input_file.each do |line|
-      if(pattern.match(line))
+      if pattern.match(line)
         position_finder(line)
-      elsif(position[:index1] && !pattern.match(line))
+      elsif position[:index1] && !pattern.match(line)
         position[:index2] ? line_adder(line) : line_draw(line)
       else
         line_adder(line)
@@ -26,17 +27,16 @@ class Pather
     outputer
   end
 
-private
+  private
 
   def position_finder(line)
-    line_position = line.scan(@pattern)
     prep = line.split('')
     if !@position[:index1]
       @position[:index1] = prep.index(@character)
       line_adder(line)
     else
-     @position[:index2] = prep.index(@character)
-     line_draw(line)
+      @position[:index2] = prep.index(@character)
+      line_draw(line)
     end
   end
 
@@ -62,9 +62,8 @@ private
   end
 
   def outputer
-    puts @path.each {|line| @output_file.puts"#{line}" }
+    puts @path.each { |line| @output_file.puts"#{line}" }
   end
-
 end
 
 input = ARGV.shift
