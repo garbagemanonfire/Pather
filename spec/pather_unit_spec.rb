@@ -1,15 +1,11 @@
 # require 'spec_helper'
 # require './pather.rb'
 
-# describe "pather units" do
+# describe 'line_adder' do
 
-#   before(:all) do
-#     @pathway = Pather.new()
+#   it 'should add lines' do
+#     return_array = Pather.line_adder("....#...................")
+#     expect(return_array).to eq(%w(....#...................))
 #   end
-
-#   after(:all) do
-#     File.delete './output.txt'
-#   end
-
 
 # end

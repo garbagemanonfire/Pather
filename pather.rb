@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
 class Pather
-  attr_accessor :path, :position, :pattern, :character, :replacer, :input, :output
+  attr_accessor :position, :pattern, :input, :output
 
   def initialize(input, output)
-    @path = []
+    @path = [] #
     @position = {}
     @pattern = /['#']/
-    @character = '#'
-    @replacer = '*'
+    @character = '#' #
+    @replacer = '*' #
     @input_file = File.new(input, 'r')
     @output_file = File.new(output, 'w')
   end
@@ -47,8 +47,8 @@ private
 
   def line_draw(line)
     @position[:index2] ? diff = @position[:index2].to_i - @position[:index1].to_i : diff = 0
-    @horizontal_line = Array.new(diff, @replacer).join
-    @position[:index2] ? line[@position[:index1], diff] = @horizontal_line : line[@position[:index1]] = @replacer
+    horizontal_line = Array.new(diff, @replacer).join
+    @position[:index2] ? line[@position[:index1], diff] = horizontal_line : line[@position[:index1]] = @replacer
     line_adder(line)
   end
 
@@ -63,6 +63,3 @@ output = ARGV.shift
 
 pathway = Pather.new(input, output)
 pathway.runner
-
-
-
