@@ -41,7 +41,7 @@ private
   end
 
   def line_adder(line)
-    line.split("")
+    line.split('')
     @path << line
   end
 
