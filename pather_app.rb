@@ -25,6 +25,8 @@ class Pather
     outputer
   end
 
+private
+
   def position_finder(line)
     if !@position[:index1]
       @position[:index1] = line.index(@character)
